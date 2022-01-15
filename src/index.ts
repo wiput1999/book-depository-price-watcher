@@ -8,7 +8,7 @@ let root
   const res = await axios.post(
     url,
     {
-      selectCurrency: 'USD',
+      selectCurrency: 'THB',
     },
     {
       headers: {
