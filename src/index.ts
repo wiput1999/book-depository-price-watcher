@@ -15,6 +15,11 @@ let root
         'Content-Type': 'application/x-www-form-urlencoded',
         'accept-language': 'en-US,en;q=0.9,th;q=0.8',
       },
+      proxy: {
+        protocol: 'https',
+        host: '119.42.67.173',
+        port: 8080,
+      },
     }
   )
 
