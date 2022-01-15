@@ -13,6 +13,7 @@ let root
     {
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
+        'accept-language': 'en-US,en;q=0.9,th;q=0.8',
       },
     }
   )
