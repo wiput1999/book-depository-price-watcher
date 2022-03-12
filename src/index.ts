@@ -1,6 +1,8 @@
 import axios from 'axios'
 import { parse } from 'node-html-parser'
-;(async () => {
+import currency from 'currency.js'
+
+async function main() {
   const url =
     'https://www.bookdepository.com/Building-Microservices-Sam-Newman/9781492034025'
 
@@ -16,6 +18,8 @@ import { parse } from 'node-html-parser'
   const price = html.querySelector('.sale-price')
 
   if (price) {
-    console.log(price.innerText)
+    console.log(currency(price.innerText).value)
   }
-})()
+}
+
+main()

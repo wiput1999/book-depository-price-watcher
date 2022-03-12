@@ -7,20 +7,19 @@
   "license": "MIT",
   "scripts": {
     "start": "node build/index.js",
-    "build": "swc src --out-dir build",
-    "dev": "swc src --out-dir build -w --sync & tsc -w --pretty --skipLibCheck --noEmit",
+    "build": "esbuild --bundle src/index.ts --outdir=build --minify --sourcemap --platform=node",
+    "dev": "esbuild --bundle src/index.ts --outdir=build --minify --sourcemap --platform=node --watch",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
     "axios": "^0.26.1",
+    "currency.js": "^2.0.4",
     "node-html-parser": "^5.3.2"
   },
   "devDependencies": {
-    "@swc/cli": "^0.1.55",
-    "@swc/core": "^1.2.153",
     "@typescript-eslint/eslint-plugin": "^5.14.0",
     "@typescript-eslint/parser": "^5.14.0",
-    "chokidar": "^3.5.3",
+    "esbuild": "^0.14.25",
     "eslint": "^8.11.0",
     "eslint-config-prettier": "^8.5.0",
     "typescript": "^4.6.2"
