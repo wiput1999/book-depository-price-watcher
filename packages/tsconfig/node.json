@@ -1,7 +1,8 @@
 {
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "Node.js",
+  "extends": "./base.json",
   "compilerOptions": {
-    "baseUrl": "src",
-    "outDir": "out",
     "target": "es2020",
     "lib": ["es2020", "DOM"],
     "module": "ES2020",
@@ -9,5 +10,7 @@
     "strict": true,
     "sourceMap": true,
     "allowSyntheticDefaultImports": true
-  }
+  },
+  "include": ["src"],
+  "exclude": ["node_modules"]
 }

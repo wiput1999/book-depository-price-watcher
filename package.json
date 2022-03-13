@@ -1,27 +1,24 @@
 {
   "name": "book-depository-price-watcher",
-  "version": "1.0.0",
-  "main": "index.js",
-  "repository": "git@github.com:wiput1999/book-depository-price-watcher.git",
-  "author": "Wiput Pootong <wiput.pootong@gmail.com>",
-  "license": "MIT",
+  "version": "0.0.0",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "scripts": {
-    "start": "node build/index.js",
-    "build": "esbuild --bundle src/index.ts --outdir=build --minify --sourcemap --platform=node",
-    "dev": "esbuild --bundle src/index.ts --outdir=build --minify --sourcemap --platform=node --watch",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
-  },
-  "dependencies": {
-    "axios": "^0.26.1",
-    "currency.js": "^2.0.4",
-    "node-html-parser": "^5.3.2"
+    "build": "turbo run build",
+    "dev": "turbo run dev --parallel",
+    "lint": "turbo run lint",
+    "format": "prettier --write \"**/*.{ts,tsx,md,json}\""
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.14.0",
-    "@typescript-eslint/parser": "^5.14.0",
-    "esbuild": "^0.14.25",
-    "eslint": "^8.11.0",
-    "eslint-config-prettier": "^8.5.0",
-    "typescript": "^4.6.2"
-  }
+    "prettier": "^2.5.1",
+    "turbo": "latest"
+  },
+  "engines": {
+    "npm": ">=7.0.0",
+    "node": ">=16.0.0"
+  },
+  "packageManager": "pnpm@6.32.2"
 }

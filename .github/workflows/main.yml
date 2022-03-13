@@ -17,6 +17,4 @@ jobs:
           node-version: '16'
           cache: pnpm
       - run: pnpm install
-      - run: pnpm lint
       - run: pnpm build
-      - run: pnpm start

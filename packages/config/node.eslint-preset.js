@@ -1,6 +1,4 @@
-/* eslint-env node */
 module.exports = {
-  root: true,
   parser: '@typescript-eslint/parser',
   plugins: ['@typescript-eslint'],
   extends: [
@@ -8,4 +6,9 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'prettier',
   ],
+  settings: {
+    next: {
+      rootDir: ['apps/*/', 'packages/*/'],
+    },
+  },
 }
