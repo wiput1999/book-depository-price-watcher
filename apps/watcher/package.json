@@ -1,0 +1,23 @@
+{
+  "name": "watcher",
+  "version": "0.0.0",
+  "private": "true",
+  "scripts": {
+    "start": "node build/index.js",
+    "build": "esbuild --bundle src/index.ts --outdir=dist --minify --sourcemap --platform=node",
+    "dev": "esbuild --bundle src/index.ts --outdir=dist --minify --sourcemap --platform=node --watch",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+  },
+  "dependencies": {
+    "axios": "^0.26.1",
+    "currency.js": "^2.0.4",
+    "node-html-parser": "^5.3.2"
+  },
+  "devDependencies": {
+    "config": "workspace:*",
+    "tsconfig": "workspace:*",
+    "eslint": "^8.11.0",
+    "esbuild": "^0.14.25",
+    "typescript": "^4.6.2"
+  }
+}
