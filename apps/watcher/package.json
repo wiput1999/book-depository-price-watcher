@@ -11,13 +11,13 @@
   "dependencies": {
     "axios": "^0.26.1",
     "currency.js": "^2.0.4",
-    "node-html-parser": "^5.3.2"
+    "node-html-parser": "^5.3.3"
   },
   "devDependencies": {
     "config": "workspace:*",
-    "tsconfig": "workspace:*",
+    "esbuild": "^0.14.27",
     "eslint": "^8.11.0",
-    "esbuild": "^0.14.25",
+    "tsconfig": "workspace:*",
     "typescript": "^4.6.2"
   }
 }

@@ -13,6 +13,7 @@
     "format": "prettier --write \"**/*.{ts,tsx,md,json}\""
   },
   "devDependencies": {
+    "eslint": "^8.11.0",
     "prettier": "^2.5.1",
     "turbo": "latest"
   },
