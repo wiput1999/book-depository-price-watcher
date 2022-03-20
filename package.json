@@ -8,9 +8,12 @@
   ],
   "scripts": {
     "build": "turbo run build",
+    "clean": "rm -rf node_modules && pnpm -r exec -- rm -rf .turbo node_modules .next dist",
     "dev": "turbo run dev --parallel",
-    "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md,json}\""
+    "format:index": "prettier --write \"*.{js,ts,json,md}\"",
+    "format:src": "prettier --write",
+    "format": "pnpm run format:index && pnpm run format:src",
+    "lint": "turbo run lint"
   },
   "devDependencies": {
     "eslint": "^8.11.0",

@@ -5,9 +5,9 @@ export default function Web() {
   return (
     <div>
       <Typography variant="h1" component="div" gutterBottom>
-        h1. Heading
+        h1. Heading 2
       </Typography>
       <Button />
     </div>
   )
-};
+}
