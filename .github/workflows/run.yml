@@ -1,11 +1,11 @@
-name: 'Build and Run'
-
+name: 'Build and Run (BKK)'
 on:
   push:
     branches:
       - 'main'
 jobs:
   build:
+    name: 'Build and Run'
     runs-on: bkk
     steps:
       - uses: actions/checkout@master
