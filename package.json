@@ -16,9 +16,9 @@
     "lint": "turbo run lint"
   },
   "devDependencies": {
-    "eslint": "^8.11.0",
-    "prettier": "^2.5.1",
-    "turbo": "latest"
+    "eslint": "^8.13.0",
+    "prettier": "^2.6.2",
+    "turbo": "^1.2.3"
   },
   "engines": {
     "npm": ">=7.0.0",
