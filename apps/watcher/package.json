@@ -15,6 +15,7 @@
   },
   "devDependencies": {
     "config": "workspace:*",
+    "db": "workspace:*",
     "esbuild": "^0.14.36",
     "eslint": "^8.13.0",
     "tsconfig": "workspace:*",
