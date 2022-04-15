@@ -11,7 +11,7 @@ async function main() {
   const books = await db.book.findMany()
 
   for (const book of books) {
-    const bookLogger = logger.child(book)
+    const bookLogger = logger.child({ book })
 
     bookLogger.info(`${book.name}: Fetching`)
     const url = book.url
@@ -29,7 +29,7 @@ async function main() {
 
     if (priceElement) {
       const price = currency(priceElement.innerText).value
-      bookLogger.info(`${book.name}: ${price} THB`)
+      bookLogger.info(`${book.name}: ${price}THB`)
 
       continue
     }
