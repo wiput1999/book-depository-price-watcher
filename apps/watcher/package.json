@@ -13,7 +13,8 @@
   "dependencies": {
     "axios": "^0.26.1",
     "currency.js": "^2.0.4",
-    "node-html-parser": "^5.3.3"
+    "node-html-parser": "^5.3.3",
+    "pino": "^7.10.0"
   },
   "devDependencies": {
     "concurrently": "^7.1.0",
