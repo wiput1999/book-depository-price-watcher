@@ -33,11 +33,25 @@ async function main() {
       const price = currency(priceElement.innerText).value
       bookLogger.info(`${book.name}: ${price}THB`)
 
+      await db.price.create({
+        data: {
+          amount: price,
+          currency: 'THB',
+          book: {
+            connect: {
+              id: book.id,
+            },
+          },
+        },
+      })
+
       continue
     }
 
     bookLogger.warn(`${book.name}: Price Not Found`)
   }
+
+  logger.info(`${books.length} book(s) completed.`)
 }
 
 main()
