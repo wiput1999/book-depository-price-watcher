@@ -1,11 +1,11 @@
-name: 'Build and Run (BKK)'
+name: 'Watcher Cronjob'
 on:
-  push:
-    branches:
-      - 'main'
+  schedule:
+    - cron: '0 2 * * *'
+
 jobs:
-  build:
-    name: 'Build and Run'
+  cron:
+    name: 'Watcher Cronjob'
     runs-on: bkk
     steps:
       - uses: actions/checkout@master
@@ -17,5 +17,8 @@ jobs:
           node-version: '16'
           cache: pnpm
       - run: pnpm install
+      - run: pnpm db:generate
       - run: pnpm build --filter=watcher
-      - run: node apps/watcher/dist/index.js
+      - run: cd apps/watcher && pnpm start
+        env:
+          DATABASE_URL: ${{secrets.DATABASE_URL}}

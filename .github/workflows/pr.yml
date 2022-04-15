@@ -19,6 +19,6 @@ jobs:
           node-version: '16'
           cache: pnpm
       - run: pnpm install
-      - run: pnpm prisma generate
+      - run: pnpm db:generate
       - run: pnpm lint
       - run: pnpm build

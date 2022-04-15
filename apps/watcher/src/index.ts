@@ -10,6 +10,8 @@ async function main() {
 
   const books = await db.book.findMany()
 
+  logger.info(`${books.length} book(s) found.`)
+
   for (const book of books) {
     const bookLogger = logger.child({ book })
 
