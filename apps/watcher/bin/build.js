@@ -7,6 +7,7 @@ require('esbuild').build({
   bundle: true,
   minify: true,
   sourcemap: true,
+  logLevel: 'info',
   outdir: 'dist',
   platform: 'node',
   external: ['db'],
