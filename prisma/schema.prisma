@@ -1,10 +1,6 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
-  provider      = "prisma-client-js"
-  output        = "../packages/db"
-  binaryTargets = ["native", "rhel-openssl-1.0.x"]
+  provider = "prisma-client-js"
+  output   = "../packages/db"
 }
 
 datasource db {
@@ -12,8 +8,21 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id    Int     @id @default(autoincrement())
-  email String  @unique
-  name  String?
+model Book {
+  id        String   @id @default(uuid())
+  name      String
+  url       String
+  prices    Price[]
+  createdAt DateTime @default(now())
+}
+
+model Price {
+  id        String   @id @default(uuid())
+  bookId    String
+  book      Book     @relation(fields: [bookId], references: [id])
+  amount    Float
+  currency  String
+  createdAt DateTime @default(now())
+
+  @@index([bookId])
 }

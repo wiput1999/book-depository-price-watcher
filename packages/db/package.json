@@ -6,8 +6,5 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "devDependencies": {
-    "@prisma/client": "^3.12.0",
-    "prisma": "^3.12.0"
-  }
+  "devDependencies": {}
 }

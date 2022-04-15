@@ -10,6 +10,11 @@
     "build": "turbo run build",
     "clean": "rm -rf node_modules && pnpm -r exec -- rm -rf .turbo node_modules .next dist",
     "dev": "turbo run dev --parallel",
+    "db:generate": "prisma generate",
+    "db:migrate": "prisma migrate dev",
+    "db:migrate:reset": "prisma migrate reset",
+    "db:migrate:deploy": "prisma migrate deploy",
+    "db:push": "prisma db deploy",
     "format:index": "prettier --write \"*.{js,ts,json,md}\"",
     "format:src": "prettier --write",
     "format": "pnpm run format:index && pnpm run format:src",
@@ -18,10 +23,10 @@
   },
   "devDependencies": {
     "@prisma/client": "^3.12.0",
-    "prisma": "^3.12.0",
     "eslint": "^8.13.0",
     "prettier": "^2.6.2",
-    "turbo": "^1.2.3"
+    "prisma": "^3.12.0",
+    "turbo": "^1.2.4"
   },
   "engines": {
     "npm": ">=7.0.0",

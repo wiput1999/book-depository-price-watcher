@@ -3,21 +3,27 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node build/index.js",
-    "build": "esbuild --bundle src/index.ts --outdir=dist --minify --sourcemap --platform=node",
-    "dev": "esbuild --bundle src/index.ts --outdir=dist --minify --sourcemap --platform=node --watch",
+    "start": "dotenv -e ../../.env -- node dist/index.js",
+    "start:watch": "dotenv -e ../../.env -- nodemon dist/index.js",
+    "build": "node bin/build.js",
+    "build:watch": "WATCH=true node bin/build.js",
+    "dev": "concurrently \"pnpm build:watch\" \"pnpm start:watch\"",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
     "axios": "^0.26.1",
     "currency.js": "^2.0.4",
-    "node-html-parser": "^5.3.3"
+    "node-html-parser": "^5.3.3",
+    "pino": "^7.10.0"
   },
   "devDependencies": {
+    "concurrently": "^7.1.0",
     "config": "workspace:*",
     "db": "workspace:*",
+    "dotenv-cli": "^5.1.0",
     "esbuild": "^0.14.36",
     "eslint": "^8.13.0",
+    "nodemon": "^2.0.15",
     "tsconfig": "workspace:*",
     "typescript": "^4.6.3"
   }
