@@ -6,8 +6,7 @@
     "start": "dotenv -e ../../.env -- node dist/index.js",
     "start:watch": "dotenv -e ../../.env -- nodemon dist/index.js",
     "build": "node bin/build.js",
-    "build:watch": "WATCH=true node bin/build.js",
-    "dev": "concurrently \"pnpm build:watch\" \"pnpm start:watch\"",
+    "dev": "node bin/build.js dev",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
