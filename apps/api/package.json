@@ -9,7 +9,10 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "fastify": "^3.29.0"
+    "fastify": "^3.29.0",
+    "graphql": "^16.5.0",
+    "mercurius": "^9.5.0",
+    "mercurius-codegen": "^3.3.1"
   },
   "devDependencies": {
     "config": "workspace:*",
