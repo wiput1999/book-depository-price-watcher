@@ -1,27 +1,36 @@
 import fastify from 'fastify'
-import { fastifyTRPCPlugin } from '@trpc/server/adapters/fastify'
-import { createContext } from './context'
-import { appRouter } from './router'
+import mercurius from 'mercurius'
+import mercuriusCodegen from 'mercurius-codegen'
+import schema from './schema'
+import resolvers from './resolvers'
+import { buildContext } from './context'
 
 const server = fastify({
   maxParamLength: 5000,
+  logger: true,
 })
 
 const PORT = process.env.PORT || 3002
 
-server.register(fastifyTRPCPlugin, {
-  prefix: '/trpc',
-  trpcOptions: { router: appRouter, createContext },
+server.register(mercurius, {
+  schema,
+  resolvers,
+  context: buildContext,
+  graphiql: false,
 })
-;(async () => {
+
+async function main() {
+  mercuriusCodegen(server, {
+    disable: process.env.NODE_ENV === 'production',
+    targetPath: './src/.codegen/graphql.ts',
+  }).catch(console.error)
+
   try {
-    await server.listen(PORT, () => {
-      console.log(`Server started at port ${PORT}`)
-    })
+    await server.listen(PORT)
   } catch (err) {
     server.log.error(err)
     process.exit(1)
   }
-})()
+}
 
-export type { AppRouter } from './router'
+main()

@@ -1,10 +1,21 @@
-import { inferAsyncReturnType } from '@trpc/server'
-import { CreateFastifyContextOptions } from '@trpc/server/adapters/fastify'
+import { PrismaClient } from 'db'
+import { FastifyReply, FastifyRequest } from 'fastify'
 
-export function createContext({ req, res }: CreateFastifyContextOptions) {
-  const user = { name: req.headers.username ?? 'anonymous' }
+type PromiseType<T> = T extends PromiseLike<infer U> ? U : T
 
-  return { req, res, user }
+declare module 'mercurius' {
+  interface MercuriusContext
+    extends PromiseType<ReturnType<typeof buildContext>> {}
 }
 
-export type Context = inferAsyncReturnType<typeof createContext>
+export const buildContext = async (
+  req: FastifyRequest,
+  _reply: FastifyReply
+) => {
+  const db = new PrismaClient()
+
+  return {
+    db,
+    authorization: req.headers.authorization,
+  }
+}

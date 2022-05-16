@@ -21,6 +21,6 @@ require('esbuild')
     minify: true,
     logLevel: 'info',
     watch: isDev && { onRebuild },
-    external: ['db'],
+    external: ['db', 'fsevents'],
   })
   .finally(onRebuild)
