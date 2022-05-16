@@ -9,9 +9,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@trpc/server": "^9.23.2",
-    "fastify": "^3.29.0",
-    "zod": "^3.14.4"
+    "fastify": "^3.29.0"
   },
   "devDependencies": {
     "config": "workspace:*",
