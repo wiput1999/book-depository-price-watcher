@@ -6,7 +6,8 @@
   "scripts": {
     "build": "node bin/build.js",
     "dev": "miniflare --watch --debug",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "codegen": "graphql-codegen --config codegen.yml"
   },
   "dependencies": {
     "@graphql-yoga/common": "^2.8.0",
@@ -14,9 +15,14 @@
   },
   "devDependencies": {
     "@cloudflare/wrangler": "^1.19.12",
+    "@graphql-codegen/cli": "2.6.2",
+    "@graphql-codegen/introspection": "2.1.1",
+    "@graphql-codegen/typescript": "2.4.11",
+    "@graphql-codegen/typescript-resolvers": "2.6.4",
     "config": "workspace:*",
     "db": "workspace:*",
     "esbuild": "^0.14.42",
+    "graphql-tag": "^2.12.6",
     "miniflare": "^2.5.0",
     "tsconfig": "workspace:*",
     "typescript": "^4.7.2"
