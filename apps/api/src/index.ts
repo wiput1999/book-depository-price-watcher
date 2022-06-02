@@ -1,36 +1,65 @@
-import fastify from 'fastify'
-import mercurius from 'mercurius'
-import mercuriusCodegen from 'mercurius-codegen'
-import schema from './schema'
-import resolvers from './resolvers'
-import { buildContext } from './context'
+import { createServer } from '@graphql-yoga/common'
 
-const server = fastify({
-  maxParamLength: 5000,
-  logger: true,
+const server = createServer({
+  schema: {
+    typeDefs: /* GraphQL */ `
+      type PokemonSprites {
+        front_default: String!
+        front_shiny: String!
+        front_female: String!
+        front_shiny_female: String!
+        back_default: String!
+        back_shiny: String!
+        back_female: String!
+        back_shiny_female: String!
+      }
+      type Pokemon {
+        id: ID!
+        name: String!
+        height: Int!
+        weight: Int!
+        sprites: PokemonSprites!
+      }
+      type Query {
+        pokemon(id: ID!): Pokemon
+      }
+    `,
+    resolvers: {
+      Query: {
+        pokemon: async (_parent, { id }) => {
+          const result = await fetch(
+            new Request(`https://pokeapi.co/api/v2/pokemon/${id}`),
+            {
+              // @ts-expect-error
+              cf: {
+                // Always cache this fetch regardless of content type
+                // for a max of 1 min before revalidating the resource
+                cacheTtl: 50,
+                cacheEverything: true,
+              },
+            }
+          )
+          return await result.json()
+        },
+      },
+    },
+  },
+  graphiql: {
+    defaultQuery: /* GraphQL */ `
+      query samplePokeAPIquery {
+        pokemon: pokemon(id: 1) {
+          id
+          name
+          height
+          weight
+          sprites {
+            front_shiny
+            back_shiny
+          }
+        }
+      }
+    `,
+  },
 })
 
-const PORT = process.env.PORT || 3002
-
-server.register(mercurius, {
-  schema,
-  resolvers,
-  context: buildContext,
-  graphiql: false,
-})
-
-async function main() {
-  mercuriusCodegen(server, {
-    disable: process.env.NODE_ENV === 'production',
-    targetPath: './src/.codegen/graphql.ts',
-  }).catch(console.error)
-
-  try {
-    await server.listen(PORT)
-  } catch (err) {
-    server.log.error(err)
-    process.exit(1)
-  }
-}
-
-main()
+server.start()

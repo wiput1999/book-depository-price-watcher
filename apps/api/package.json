@@ -2,23 +2,23 @@
   "name": "api",
   "version": "0.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "build": "node bin/build.js",
-    "dev": "node bin/build.js dev",
+    "dev": "miniflare --watch --debug",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "fastify": "^3.29.0",
-    "graphql": "^16.5.0",
-    "mercurius": "^9.5.0",
-    "mercurius-codegen": "^3.3.1"
+    "@graphql-yoga/common": "^2.8.0",
+    "graphql": "^16.5.0"
   },
   "devDependencies": {
+    "@cloudflare/wrangler": "^1.19.12",
     "config": "workspace:*",
     "db": "workspace:*",
-    "esbuild": "^0.14.39",
+    "esbuild": "^0.14.42",
+    "miniflare": "^2.5.0",
     "tsconfig": "workspace:*",
-    "typescript": "^4.6.4"
+    "typescript": "^4.7.2"
   }
 }
