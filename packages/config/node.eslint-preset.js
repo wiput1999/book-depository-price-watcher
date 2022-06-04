@@ -7,6 +7,11 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'prettier',
   ],
+  env: {
+    node: true,
+    browser: true,
+    es6: true,
+  },
   settings: {
     next: {
       rootDir: ['apps/*/', 'packages/*/'],

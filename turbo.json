@@ -8,6 +8,9 @@
     "lint": {
       "outputs": []
     },
+    "docker": {
+      "outputs": []
+    },
     "dev": {
       "cache": false
     }

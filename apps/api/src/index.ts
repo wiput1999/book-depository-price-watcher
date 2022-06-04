@@ -1,4 +1,4 @@
-import { createServer } from '@graphql-yoga/common'
+import { createServer } from '@graphql-yoga/node'
 import { getClient } from './db'
 
 import { resolvers } from './resolvers'
@@ -11,6 +11,7 @@ const server = createServer({
   },
   context: (context) => ({ ...context, db: getClient() }),
   graphiql: {},
+  port: Number(process.env.PORT) || 4000,
 })
 
 server.start()

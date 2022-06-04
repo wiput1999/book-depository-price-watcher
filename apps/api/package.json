@@ -4,26 +4,27 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "build": "node bin/build.js",
-    "dev": "miniflare --watch --debug",
+    "build": "pnpm codegen && node bin/build.mjs",
+    "docker": "cd ../../ && docker build --platform=linux/amd64 -f ./apps/api/Dockerfile -t bdp-api .",
+    "dev": "node bin/build.mjs dev",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "codegen": "graphql-codegen --config codegen.yml"
+    "codegen": "graphql-codegen --config codegen.yml",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
     "@graphql-yoga/common": "^2.8.0",
+    "@graphql-yoga/node": "^2.8.0",
+    "db": "workspace:*",
     "graphql": "^16.5.0"
   },
   "devDependencies": {
-    "@cloudflare/wrangler": "^1.19.12",
     "@graphql-codegen/cli": "2.6.2",
     "@graphql-codegen/introspection": "2.1.1",
     "@graphql-codegen/typescript": "2.4.11",
     "@graphql-codegen/typescript-resolvers": "2.6.4",
     "config": "workspace:*",
-    "db": "workspace:*",
     "esbuild": "^0.14.42",
     "graphql-tag": "^2.12.6",
-    "miniflare": "^2.5.0",
     "tsconfig": "workspace:*",
     "typescript": "^4.7.2"
   }

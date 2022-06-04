@@ -1,8 +1,0 @@
-name = "book-depository"
-account_id = ""
-compatibility_date = "2022-06-02"
-workers_dev = true
-
-[build]
-command = "pnpm run build"
-watch_dir = "src"
