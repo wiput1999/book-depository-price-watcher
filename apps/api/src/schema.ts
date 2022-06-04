@@ -11,6 +11,7 @@ export const typeDefs = gql`
     back_female: String!
     back_shiny_female: String!
   }
+
   type Pokemon {
     id: ID!
     name: String!
@@ -18,6 +19,7 @@ export const typeDefs = gql`
     weight: Int!
     sprites: PokemonSprites!
   }
+
   type Query {
     pokemon(id: ID!): Pokemon
   }

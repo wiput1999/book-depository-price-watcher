@@ -15,6 +15,7 @@
     "@graphql-yoga/common": "^2.8.0",
     "@graphql-yoga/node": "^2.8.0",
     "db": "workspace:*",
+    "fastify": "^3.29.0",
     "graphql": "^16.5.0"
   },
   "devDependencies": {
