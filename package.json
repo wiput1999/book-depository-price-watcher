@@ -24,10 +24,10 @@
     "prisma": "prisma"
   },
   "devDependencies": {
-    "@prisma/client": "^3.14.0",
-    "eslint": "^8.16.0",
+    "@prisma/client": "^3.15.1",
+    "eslint": "^8.17.0",
     "prettier": "^2.6.2",
-    "prisma": "^3.14.0",
+    "prisma": "^3.15.1",
     "turbo": "^1.2.16"
   },
   "engines": {
