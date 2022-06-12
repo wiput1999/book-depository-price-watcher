@@ -32,6 +32,7 @@ COPY --from=builder /usr/app/node_modules node_modules
 COPY --from=builder /usr/app/apps/api/node_modules apps/api/node_modules
 COPY --from=builder /usr/app/apps/api/dist apps/api/dist
 COPY --from=builder /usr/app/packages/db packages/db
+COPY packages/db/package.json ./packages/db/package.json
 
 EXPOSE 8080
 
@@ -39,4 +40,4 @@ ENV NODE_ENV production
 
 ENV PORT 8080
 
-CMD [ "node", "apps/api/dist/index.js" ]
+CMD [ "node", "apps/api/dist/index.mjs" ]

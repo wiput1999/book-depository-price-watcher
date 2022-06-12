@@ -1,12 +1,13 @@
 import { createServer } from '@graphql-yoga/node'
 import fastify, { FastifyRequest, FastifyReply } from 'fastify'
 
-const app = fastify({ logger: true })
-
 import { getClient } from './db'
-
 import { resolvers } from './resolvers'
 import { typeDefs } from './schema'
+
+const app = fastify({ logger: true })
+
+await app.register(import('@fastify/compress'), { global: false })
 
 const graphQLServer = createServer<{
   req: FastifyRequest

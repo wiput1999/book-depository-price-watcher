@@ -1,4 +1,9 @@
 {
+  "compilerOptions": {
+    "module": "esnext",
+    "esModuleInterop": false,
+    "target": "ESNext"
+  },
   "extends": "tsconfig/node.json",
   "include": ["**/*.ts"],
   "exclude": ["node_modules"]

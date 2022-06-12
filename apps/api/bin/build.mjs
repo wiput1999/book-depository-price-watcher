@@ -15,10 +15,19 @@ build({
   entryPoints: ['src/index.ts'],
   outdir: 'dist',
   platform: 'node',
+  target: 'esnext',
+  format: 'esm',
+  outExtension: { '.js': '.mjs' },
   bundle: true,
   sourcemap: true,
   minify: true,
   logLevel: 'info',
   watch: isDev && { onRebuild },
+  banner: {
+    js: [
+      `import { createRequire as topLevelCreateRequire } from 'module'`,
+      `const require = topLevelCreateRequire(import.meta.url)`,
+    ].join('\n'),
+  },
   external: ['db'],
 }).finally(onRebuild)

@@ -2,7 +2,7 @@
   "name": "api",
   "version": "0.0.0",
   "description": "",
-  "main": "dist/index.js",
+  "main": "dist/index.mjs",
   "scripts": {
     "build": "pnpm codegen && node bin/build.mjs",
     "docker": "cd ../../ && docker build --platform=linux/amd64 -f ./apps/api/Dockerfile -t bdp-api .",
@@ -12,6 +12,7 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
+    "@fastify/compress": "^6.0.0",
     "@graphql-yoga/common": "^2.8.2",
     "@graphql-yoga/node": "^2.9.1",
     "db": "workspace:*",
@@ -19,6 +20,7 @@
     "graphql": "^16.5.0"
   },
   "devDependencies": {
+    "@esbuild-plugins/node-modules-polyfill": "^0.1.4",
     "@graphql-codegen/cli": "2.6.2",
     "@graphql-codegen/introspection": "2.1.1",
     "@graphql-codegen/typescript": "2.5.1",
